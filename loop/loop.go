@@ -1,17 +1,7 @@
 package loop
 
+import util "github.com/t3reezhou/golang_util"
+
 func Loop(offset, limit int, do func(int, int) (int, error)) error {
-	if offset < 0 || limit < 0 {
-		return nil
-	}
-	for {
-		l, err := do(offset, limit)
-		if err != nil {
-			return err
-		}
-		if l <= 0 || l < limit {
-			return nil
-		}
-		offset += l
-	}
+	return util.Loop(offset, limit, do)
 }
