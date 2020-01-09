@@ -1,4 +1,4 @@
-package util
+package iterator
 
 type Int64Iterator struct {
 	self              []int64
@@ -25,7 +25,7 @@ func NewInt64Iterator(src []int64, limit int) *Int64Iterator {
 	return &Int64Iterator{self: src, limit: limit}
 }
 
-func Iterator(lenght, limit int, exq func(int, int) error) error {
+func Iterator(lenght, limit int, do func(int, int) error) error {
 	if limit > lenght {
 		limit = lenght
 	}
@@ -35,7 +35,7 @@ func Iterator(lenght, limit int, exq func(int, int) error) error {
 		} else {
 			start, end = end, end+limit
 		}
-		if err := exq(start, end); err != nil {
+		if err := do(start, end); err != nil {
 			return err
 		}
 	}
