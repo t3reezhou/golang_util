@@ -2,20 +2,12 @@ package reduce
 
 import "testing"
 
-func TestReduce(t *testing.T) {
-	result, err := ReduceInt(func(x, y int) int { return x + y }, []int{1, 2, 3, 4}, nil)
-	if err != nil {
-		t.Error(err.Error())
-	}
-	if result != 10 {
+func TestInt(t *testing.T) {
+	if result := Int(func(x, y int) int { return x + y }, []int{1, 2, 3, 4}, nil); result != 10 {
 		t.Errorf("result should be 10,but it is %d", result)
 	}
 
-	result, err = ReduceInt(func(x, y int) int { return x * y }, []int{1, 2, 3, 4}, nil)
-	if err != nil {
-		t.Error(err.Error())
-	}
-	if result != 24 {
+	if result := Int(func(x, y int) int { return x * y }, []int{1, 2, 3, 4}, nil); result != 24 {
 		t.Errorf("result should be 24,but it is %d", result)
 	}
 }

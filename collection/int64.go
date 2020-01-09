@@ -2,8 +2,8 @@ package collection
 
 import "github.com/t3reezhou/golang_util/filter"
 
-func CollectionUint16(length int, f func(i int) uint16) []uint16 {
-	result := make([]uint16, length)
+func Int64(length int, f func(i int) int64) []int64 {
+	result := make([]int64, length)
 	filter.Filter(length, func(i int) bool { return true }, func(i int) { result[i] = f(i) })
 	return result
 }

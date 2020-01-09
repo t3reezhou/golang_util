@@ -1,8 +1,11 @@
 package reduce
 
-func ReduceInt64(f func(x, y int64) int64, ints []int64, initNum *int64) (result int64, err error) {
+func Int64(f func(x, y int64) int64, ints []int64, initNum *int64) (result int64) {
 	if len(ints) == 0 {
-		return -1, errSliceEmpty
+		if initNum == nil {
+			panic(errSliceEmpty)
+		}
+		return *initNum
 	}
 	if initNum != nil {
 		result = *initNum

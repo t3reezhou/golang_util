@@ -1,8 +1,11 @@
 package reduce
 
-func ReduceInt(f func(x, y int) int, ints []int, initNum *int) (result int, err error) {
+func Int(f func(x, y int) int, ints []int, initNum *int) (result int) {
 	if len(ints) == 0 {
-		return -1, errSliceEmpty
+		if initNum == nil {
+			panic(errSliceEmpty)
+		}
+		return *initNum
 	}
 	if initNum != nil {
 		result = *initNum

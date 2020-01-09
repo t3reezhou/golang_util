@@ -1,8 +1,11 @@
 package reduce
 
-func ReduceString(f func(x, y string) string, ints []string, initNum *string) (result string, err error) {
+func String(f func(x, y string) string, ints []string, initNum *string) (result string) {
 	if len(ints) == 0 {
-		return "", errSliceEmpty
+		if initNum == nil {
+			panic(errSliceEmpty)
+		}
+		return *initNum
 	}
 	if initNum != nil {
 		result = *initNum

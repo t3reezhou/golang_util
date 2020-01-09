@@ -1,8 +1,11 @@
 package reduce
 
-func ReduceBool(f func(x, y bool) bool, ints []bool, initNum *bool) (result bool, err error) {
+func Bool(f func(x, y bool) bool, ints []bool, initNum *bool) (result bool) {
 	if len(ints) == 0 {
-		return false, errSliceEmpty
+		if initNum == nil {
+			panic(errSliceEmpty)
+		}
+		return *initNum
 	}
 	if initNum != nil {
 		result = *initNum
